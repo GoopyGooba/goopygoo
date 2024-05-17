@@ -116,10 +116,10 @@ export class SliderMap {
 		var x1: number, y1: number, x2: number, y2: number;
 		if (typeof arguments[i] == "object") { x1 = arguments[i].cx; y1 = arguments[i].cy; i += 1; } else { x1 = arguments[i]; y1 = arguments[i + 1]; i += 2; }
 		if (typeof arguments[i] == "object") { x2 = arguments[i].cx; y2 = arguments[i].cy; i += 1; } else { x2 = arguments[i]; y2 = arguments[i + 1]; i += 2; }
-
+	
 		//make sure 1st coordinate is the empty
 		if (this.get(x2, y2) == this.empty) { let a = x1; let b = y1; x1 = x2; y1 = y2; x2 = a; y2 = b; }
-
+	
 		//update map
 		var a = this.get(x1, y1);
 		var b = this.get(x2, y2);
@@ -129,13 +129,30 @@ export class SliderMap {
 		this.tiles[ib] = a;
 		a.cx = x2; a.cy = y2;
 		b.cx = x1; b.cy = y1;
-
+	
 		if (x1 == x2 && y1 == y2) { console.warn("Same tile swapped"); return; }
-		if (Math.abs(x1 - x2) + Math.abs(y1 - y2) != 1) { console.warn("Non adjecent swapped"); }
-
+		if (Math.abs(x1 - x2) + Math.abs(y1 - y2) != 1) { console.warn("Non adjacent swapped"); }
+	
+		// Determine the direction of the move and simulate key press
+		if (x2 > x1) {
+			this.simulateKeyPress('ArrowRight');
+		} else if (x2 < x1) {
+			this.simulateKeyPress('ArrowLeft');
+		} else if (y2 > y1) {
+			this.simulateKeyPress('ArrowDown');
+		} else if (y2 < y1) {
+			this.simulateKeyPress('ArrowUp');
+		}
+	
 		//add to movelist
 		this.moves.push({ x1: x1, y1: y1, x2: x2, y2: y2 });
 	}
+	
+	simulateKeyPress(key: string) {
+		const event = new KeyboardEvent('keydown', { key });
+		document.dispatchEvent(event);
+	}
+	
 	clearpath(x: number, y: number, clearstart: boolean) {
 		if (clearstart) {//clear start location as well
 			this.get(x, y).f = false; this.get(x, y).p = false;

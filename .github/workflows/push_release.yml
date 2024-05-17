@@ -30,6 +30,6 @@ jobs:
           folder: dist # The folder the action should deploy.
           ssh-key: ${{ secrets.SSH_DEPLOY_KEY }}
           branch: main
-          repository-name: Leridon/cluetrainer-live
+          repository-name: GoopyGooba/goopygoo
           clean: true
           tag: release-${{env.VERSION}}-${{github.run_id}}

@@ -93,7 +93,7 @@ Some Highlights:
 
 1. Make sure you have the Alt1 toolkit installed. Alt1 can only be downloaded legitimately from [runeapps.org](https://runeapps.org/).
 2. Visit the [Web Version](https://leridon.github.io/rs3scantrainer/) to access some of Clue Trainer's features or install it using the links provided there.
-3. Alternatively, open `alt1://addapp/https://leridon.github.io/rs3scantrainer/appconfig.json` in your browser or visit `https://leridon.github.io/rs3scantrainer/` in Alt1's included browser.
+3. Alternatively, open `alt1://addapp/https://GoopyGooba.github.io/goopygoo/appconfig.json` in your browser or visit `https://leridon.github.io/rs3scantrainer/` in Alt1's included browser.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
